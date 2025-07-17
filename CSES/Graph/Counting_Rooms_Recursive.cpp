@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define endl '\n'
-#define debug(x) cerr << #x << " --> " << x << endl;
-#define shine ios_base::sync_with_stdio(false), cout.tie(nullptr), cin.tie(nullptr);
  
 int n, m;
 int dx[4] = {1, 0, -1, 0};
@@ -26,7 +23,6 @@ void dfs(int x, int y, vector<vector<char>> &grid){
 }
  
 int main() {
-    shine
     cin >> n >> m;
     vector<vector<char>> grid(n, vector<char>(m));
     for(int i = 0; i < n; i++){
