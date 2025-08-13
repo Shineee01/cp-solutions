@@ -28,7 +28,7 @@ int main() {
         adj[v].push_back({u, w});
     }
     cin >> max_price;
-    vector<ll> dist(node + 1);
+    vector<ll> dist(node + 1, 1e18);
     queue<ll> q;
     q.push(0);
     dist[0] = 0;
@@ -37,11 +37,10 @@ int main() {
         ll cur = q.front();
         q.pop();
         for(auto [next, weight] : adj[cur]){
-            if(dist[cur] + weight <= max_price){
+            if(dist[cur] + weight <= max_price && dist[cur] + weight < dist[next]){
                 dist[next] = dist[cur] + weight;
                 q.push(next);
-                cur_price = min(cur_price, price[next].second);
-                if(cur_price >= price[next].second){
+                if(cur_price > price[next].second){
                     cur_price = price[next].second;
                     ans = price[next].first;
                 }
